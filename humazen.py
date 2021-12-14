@@ -11,26 +11,23 @@ def create_profile():
     print("Creating goes here")
 
 def load_profile(profile):
-    #  LOAD STRENGTH
     strength = 0 
-    for i, row in enumerate(open("saves/" + profile + ".hz")): 
-        if i in range(0,0): 
-            strength = int(row)
-    #  LOAD VITALITY
     vitality = 0 
-    for i, row in enumerate(open("saves/" + profile + ".hz")): 
-        if i in range(1,1): 
-            vitality = int(row)
-    #  LOAD FOCUS
     focus = 0 
-    for i, row in enumerate(open("saves/" + profile + ".hz")): 
-        if i in range(2,2): 
-            focus = int(row)
-    #  LOAD STATE
     state = 0 
     for i, row in enumerate(open("saves/" + profile + ".hz")): 
-        if i in range(3,3): 
-            state = int(row)
+    #  LOAD STRENGTH
+        if i in range(0,1): 
+            strength = (row)
+    #  LOAD VITALITY
+        if i in range(1,2): 
+            vitality = (row)
+    #  LOAD FOCUS
+        if i in range(2,3): 
+            focus = (row)
+    #  LOAD STATE
+        if i in range(3,4): 
+            state = (row)
     display_profile(strength, vitality, focus, state)
 
 filenames = next(walk("saves"), (None, None, []))[2]  # [] if no file
@@ -60,3 +57,4 @@ else:
         print("No prior saves found - initialising profile creation.")
         create_profile()
 input()
+
