@@ -1,5 +1,7 @@
 from pathlib import Path
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
+import os
+from os import walk
 
 
 OUTPUT_PATH = Path(__file__).parent
@@ -9,6 +11,62 @@ ASSETS_PATH = OUTPUT_PATH / Path("./assets")
 def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 
+#
+
+def display_profile(strength, vitality, focus, state):
+    x = ""
+
+def runcode():
+    if state == "reqsave":
+        inp = entry_1.get()
+        if str(inp) == "NEW":
+            wipelines()
+            canvas.itemconfig(line1, text = "Insert Creation 'ere")
+        else:
+            strength = 0 
+            vitality = 0 
+            focus = 0 
+            mood = 0 
+            for i, row in enumerate(open("saves/" + str(inp) + ".hz")): 
+            #  LOAD STRENGTH
+                if i in range(0,1): 
+                    strength = (row)
+            #  LOAD VITALITY
+                if i in range(1,2): 
+                    vitality = (row)
+            #  LOAD FOCUS
+                if i in range(2,3): 
+                    focus = (row)
+            #  LOAD MOOD
+                if i in range(3,4): 
+                    mood = (row)
+            wipelines()
+            canvas.itemconfig(line1, text = "Loaded Save!")
+            display_profile(strength, vitality, focus, mood)
+
+def display_profile(strength, vitality, focus, mood):
+    string = "S: " + strength + "   " + "V: " + vitality + "   " + "F: " + focus + "   " + "M: " + mood + "   "
+    ssize = 16
+    amount = ssize - len(string)
+    canvas.itemconfig(stattext, text = string.center(amount))
+
+def wipelines():
+    canvas.itemconfig(line1, text = " ")
+    canvas.itemconfig(line2, text = " ")
+    canvas.itemconfig(line3, text = " ")
+    canvas.itemconfig(line4, text = " ")
+    canvas.itemconfig(line5, text = " ")
+    canvas.itemconfig(line6, text = " ")
+    canvas.itemconfig(line7, text = " ")
+    canvas.itemconfig(line8, text = " ")
+    canvas.itemconfig(line9, text = " ")
+    canvas.itemconfig(line10, text = " ")
+    canvas.itemconfig(line11, text = " ")
+    canvas.itemconfig(line12, text = " ")
+    canvas.itemconfig(line13, text = " ")
+    canvas.itemconfig(line14, text = " ")
+    
+#
 
 window = Tk()
 
@@ -59,7 +117,7 @@ image_4 = canvas.create_image(
     image=image_image_4
 )
 
-canvas.create_text(
+line1 = canvas.create_text(
     473.0,
     156.0,
     anchor="nw",
@@ -68,7 +126,7 @@ canvas.create_text(
     font=("Roboto", 24 * -1)
 )
 
-canvas.create_text(
+line4 = canvas.create_text(
     472.0,
     246.0,
     anchor="nw",
@@ -77,7 +135,7 @@ canvas.create_text(
     font=("Roboto", 24 * -1)
 )
 
-canvas.create_text(
+line2 = canvas.create_text(
     473.0,
     186.0,
     anchor="nw",
@@ -86,7 +144,7 @@ canvas.create_text(
     font=("Roboto", 24 * -1)
 )
 
-canvas.create_text(
+line5 = canvas.create_text(
     472.0,
     276.0,
     anchor="nw",
@@ -95,7 +153,7 @@ canvas.create_text(
     font=("Roboto", 24 * -1)
 )
 
-canvas.create_text(
+line3 = canvas.create_text(
     473.0,
     216.0,
     anchor="nw",
@@ -104,7 +162,7 @@ canvas.create_text(
     font=("Roboto", 24 * -1)
 )
 
-canvas.create_text(
+line6 = canvas.create_text(
     472.0,
     306.0,
     anchor="nw",
@@ -113,7 +171,7 @@ canvas.create_text(
     font=("Roboto", 24 * -1)
 )
 
-canvas.create_text(
+line7 = canvas.create_text(
     473.0,
     336.0,
     anchor="nw",
@@ -122,7 +180,7 @@ canvas.create_text(
     font=("Roboto", 24 * -1)
 )
 
-canvas.create_text(
+line8 = canvas.create_text(
     474.0,
     366.0,
     anchor="nw",
@@ -131,7 +189,7 @@ canvas.create_text(
     font=("Roboto", 24 * -1)
 )
 
-canvas.create_text(
+line11 = canvas.create_text(
     473.0,
     456.0,
     anchor="nw",
@@ -140,7 +198,7 @@ canvas.create_text(
     font=("Roboto", 24 * -1)
 )
 
-canvas.create_text(
+line9 = canvas.create_text(
     474.0,
     396.0,
     anchor="nw",
@@ -149,7 +207,7 @@ canvas.create_text(
     font=("Roboto", 24 * -1)
 )
 
-canvas.create_text(
+line12 = canvas.create_text(
     473.0,
     486.0,
     anchor="nw",
@@ -158,7 +216,7 @@ canvas.create_text(
     font=("Roboto", 24 * -1)
 )
 
-canvas.create_text(
+line10 = canvas.create_text(
     474.0,
     426.0,
     anchor="nw",
@@ -167,7 +225,7 @@ canvas.create_text(
     font=("Roboto", 24 * -1)
 )
 
-canvas.create_text(
+line13 = canvas.create_text(
     473.0,
     516.0,
     anchor="nw",
@@ -176,7 +234,7 @@ canvas.create_text(
     font=("Roboto", 24 * -1)
 )
 
-canvas.create_text(
+line14 = canvas.create_text(
     474.0,
     546.0,
     anchor="nw",
@@ -212,7 +270,7 @@ image_5 = canvas.create_image(
     image=image_image_5
 )
 
-canvas.create_text(
+stattext = canvas.create_text(
     73.0,
     633.0,
     anchor="nw",
@@ -227,7 +285,7 @@ button_1 = Button(
     image=button_image_1,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: print("button_1 clicked"),
+    command=lambda: runcode(),
     relief="flat"
 )
 button_1.place(
@@ -236,5 +294,39 @@ button_1.place(
     width=58.0,
     height=54.0
 )
+
+#
+
+state = "none"
+
+wipelines()
+filenames = next(walk("saves"), (None, None, []))[2]  # [] if no file
+if len(filenames) < 1:
+    canvas.itemconfig(line1, text = "No prior saves found - initialising profile creation.")
+    #create_profile()
+else:
+    debounce = False
+    for i in range(0, len(filenames)):
+        if ".hz" in filenames[i]:
+            debounce = True
+    if debounce == True:
+        amount = 0
+        for i in range(0, len(filenames)):
+            if ".hz" in filenames[i]:
+                amount += 1
+        canvas.itemconfig(line1, text = "We've managed to find " + str(amount) + " save/s.")
+        for i in range(0, len(filenames)):
+            if ".hz" in filenames[i]:
+                savedisplay = filenames[i]
+                savedisplay = savedisplay[:-3]
+                canvas.itemconfig(line2, text = " | " + savedisplay)
+        canvas.itemconfig(line4, text = "[Type 'NEW' to create a new save, or specify the save name to load it!]")
+        state = "reqsave"
+    else:
+        print("No prior saves found - initialising profile creation.")
+        #create_profile()
+#
+
 window.resizable(False, False)
 window.mainloop()
+
