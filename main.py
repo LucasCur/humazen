@@ -29,26 +29,25 @@ def runcode():
             mood = 0 
             for i, row in enumerate(open("saves/" + str(inp) + ".hz")): 
             #  LOAD STRENGTH
-                if i in range(0,1): 
-                    strength = (row)
+                if i == 0: 
+                    strength = row
             #  LOAD VITALITY
-                if i in range(1,2): 
-                    vitality = (row)
+                if i == 1: 
+                    vitality = row
             #  LOAD FOCUS
-                if i in range(2,3): 
-                    focus = (row)
+                if i == 2: 
+                    focus = row
             #  LOAD MOOD
-                if i in range(3,4): 
-                    mood = (row)
+                if i == 3: 
+                    mood = row
             wipelines()
             canvas.itemconfig(line1, text = "Loaded Save!")
             display_profile(strength, vitality, focus, mood)
 
 def display_profile(strength, vitality, focus, mood):
-    string = "S: " + strength + "   " + "V: " + vitality + "   " + "F: " + focus + "   " + "M: " + mood + "   "
-    ssize = 16
-    amount = ssize - len(string)
-    canvas.itemconfig(stattext, text = string.center(amount))
+    string = "S: "+strength.strip()+"    V: "+vitality.strip()+"    F: "+focus.strip()+"    M: "+mood.strip()+""
+    centerstring = string.center(50, " ")
+    canvas.itemconfig(stattext, text = centerstring)
 
 def wipelines():
     canvas.itemconfig(line1, text = " ")
@@ -286,7 +285,8 @@ button_1 = Button(
     borderwidth=0,
     highlightthickness=0,
     command=lambda: runcode(),
-    relief="flat"
+    relief="flat",
+    bg="white"
 )
 button_1.place(
     x=1167.0,
