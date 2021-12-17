@@ -4,5 +4,5 @@ Humazen is an interactive self-improvement tracker, with the user's improvement 
 
 - 📫 LICENSE
 
-All my code here is protected by the CC-NC-SA License, even though it probably doesn't need to be ;)
+All my code here is protected by the CC-NC-ND License.
 
