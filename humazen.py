@@ -1,12 +1,6 @@
 import os
 from os import walk
 
-def display_profile(s1, v, f, s2):
-    print("Strength:\n | " + str(s1))
-    print("Vitality:\n | " + str(v))
-    print("Focus:\n | " + str(f))
-    print("State:\n | " + str(s2))
-
 def create_profile():
     print("Creating goes here")
 
